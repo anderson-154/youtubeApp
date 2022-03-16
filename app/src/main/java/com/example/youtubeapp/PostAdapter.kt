@@ -20,7 +20,6 @@ class PostAdapter : RecyclerView.Adapter<PostView>() {
     override fun onBindViewHolder(skeleton: PostView, position: Int) {
         val post = posts[position]
         skeleton.caption.text = post.caption
-        skeleton.citySpinner.tag = post.city
     }
 
     override fun getItemCount(): Int {

@@ -13,10 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*requestPermissions(arrayOf(
+        requestPermissions(arrayOf(
             Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE
-        ),1)**/
+        ),1)
 
         nextBtn.setOnClickListener {
             login()
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    /*override fun onRequestPermissionsResult(
+    override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
@@ -50,5 +50,5 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Tiene que aceptar todos los permisos para poder continuar", Toast.LENGTH_SHORT).show()
             }
         }
-    }**/
+    }
 }
