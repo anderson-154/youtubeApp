@@ -78,6 +78,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/otrasCuentasTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="236dp"
+        android:text="Otras Cuentas"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="40dp"
@@ -91,16 +104,17 @@
 
     <Button
         android:id="@+id/editBtn"
-        android:layout_width="125dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="116dp"
+        android:layout_height="34dp"
         android:background="#00FFFFFF"
+        android:gravity="left"
         android:paddingLeft="0dp"
         android:text="Editar canal"
         android:textAllCaps="false"
         android:textColor="#03A9F4"
         android:textSize="10sp"
         app:layout_constraintStart_toStartOf="@+id/nameTV4"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV4" />
+        app:layout_constraintTop_toBottomOf="@+id/nameTV4"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

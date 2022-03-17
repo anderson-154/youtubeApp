@@ -7,22 +7,22 @@
 
 
     <EditText
-        android:id="@+id/captionET3"
+        android:id="@+id/captionET"
         android:layout_width="0dp"
         android:layout_height="53dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="188dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="Descripción"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postImage2" />
+        app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
     <ImageView
-        android:id="@+id/postImage2"
+        android:id="@+id/postImage"
         android:layout_width="0dp"
         android:layout_height="210dp"
         android:layout_marginTop="4dp"
@@ -33,36 +33,53 @@
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <Button
-        android:id="@+id/galeryBtn2"
+        android:id="@+id/galeryBtn"
         android:layout_width="135dp"
         android:layout_height="48dp"
         android:layout_marginStart="54dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="33dp"
         android:text="Galería"
-        app:layout_constraintEnd_toStartOf="@+id/cameraBtn2"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toStartOf="@+id/cameraBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/postImage2" />
+        app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
     <Button
-        android:id="@+id/cameraBtn2"
+        android:id="@+id/cameraBtn"
         android:layout_width="135dp"
         android:layout_height="48dp"
         android:layout_marginStart="33dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="54dp"
         android:text="Camara"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/galeryBtn2"
-        app:layout_constraintTop_toBottomOf="@+id/postImage2" />
+        app:layout_constraintStart_toEndOf="@+id/galeryBtn"
+        app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
     <Button
-        android:id="@+id/publishBtn2"
+        android:id="@+id/publishBtn"
         android:layout_width="118dp"
         android:layout_height="50dp"
         android:layout_marginBottom="25dp"
         android:text="Publicar"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/cityET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="191dp"
+        android:layout_marginBottom="13dp"
+        android:ems="10"
+        android:hint="Ciudad"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/captionET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/captionET" />
 </androidx.constraintlayout.widget.ConstraintLayout>
