@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.youtubeapp.databinding.ActivityHomeBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeActivity : AppCompatActivity() {
 
@@ -12,10 +11,9 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var newPostFrament : NewPostFragment
     private lateinit var profileFragemnt : ProfileFragment
-    private lateinit var recyclerFragemnt : RecyclerPostView
+    private lateinit var recyclerFragemnt : RecyclerPostFragment
     private lateinit var binding: ActivityHomeBinding
 
-    //private lateinit var adapter : PostAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,21 +21,15 @@ class HomeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        //layoutMangaer = LinearLayoutManager(this)
-
-       // postRecyclerView.layoutManager = layoutMangaer
-        //postRecyclerView.setHasFixedSize(true)
-
-        //adapter = PostAdapter()
-        //postRecyclerView.adapter = adapter
-
 
         newPostFrament = NewPostFragment.newInstance()
         profileFragemnt = ProfileFragment.newInstance()
-        recyclerFragemnt = RecyclerPostView.newInstance()
+        recyclerFragemnt = RecyclerPostFragment.newInstance()
+
+        //suscription
+        newPostFrament.listener = recyclerFragemnt
 
         showFragment(recyclerFragemnt)
-
 
         binding.navigator.setOnItemSelectedListener { menuItem->
             if(menuItem.itemId == R.id.newMenu){

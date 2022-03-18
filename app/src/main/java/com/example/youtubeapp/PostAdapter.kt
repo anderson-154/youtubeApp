@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class PostAdapter : RecyclerView.Adapter<PostView>() {
 
-   private val  posts = ArrayList<Post>()
+   private val posts = ArrayList<Post>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostView {
@@ -19,6 +19,10 @@ class PostAdapter : RecyclerView.Adapter<PostView>() {
     override fun onBindViewHolder(skeleton: PostView, position: Int) {
         val post = posts[position]
         skeleton.caption.text = post.caption
+    }
+
+    fun addPost(post:Post){
+        posts.add(post)
     }
 
     override fun getItemCount(): Int {
