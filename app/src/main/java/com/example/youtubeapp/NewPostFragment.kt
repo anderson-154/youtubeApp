@@ -1,20 +1,30 @@
 package com.example.youtubeapp
 
-import android.content.Context
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import com.example.youtubeapp.databinding.FragmentNewPostBinding
+import java.io.File
 
 
 class NewPostFragment : Fragment() {
 
     private var _binding : FragmentNewPostBinding? = null
     private val binding get() = _binding!!
-
+    private var file:File? = null
     //listener
     var listener : OnNewPostListener? = null
 
@@ -37,7 +47,47 @@ class NewPostFragment : Fragment() {
             }
         }
 
+        val cameraLauncher = registerForActivityResult(StartActivityForResult(),::onCameraResult)
+        val galleryLauncher = registerForActivityResult(StartActivityForResult(),::onGalleryResult)
+
+
+        binding.cameraBtn.setOnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            file = File("${this.activity.getExternalFilesDir(null)}/photo.png")
+            val url = FileProvider.getUriForFile(this, packageName ,file!!)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,url)
+
+            cameraLauncher.launch(intent)
+        }
+
+        binding.galeryBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.type = "image/*"
+            galleryLauncher.launch(intent)
+        }
+
         return view
+    }
+
+    fun onCameraResult(result: ActivityResult){
+        if(result.resultCode == Activity.RESULT_OK){
+            val bitmap = BitmapFactory.decodeFile(file?.path)
+            val thumball = Bitmap.createScaledBitmap(bitmap, bitmap.width/4,bitmap.height/4,true)
+            binding.postImage.setImageBitmap(thumball)
+        }else if (result.resultCode == Activity.RESULT_CANCELED){
+            Toast.makeText(this.activity,"No tomó foto", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun onGalleryResult(result : ActivityResult){
+        if(result.resultCode == Activity.RESULT_OK){
+            val uriImage = result.data?.data
+            uriImage?.let {
+                binding.postImage.setImageURI(uriImage)
+            }
+        }else if (result.resultCode == Activity.RESULT_CANCELED){
+        Toast.makeText(this.activity,"No se selecciono una imagen", Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {
@@ -46,7 +96,7 @@ class NewPostFragment : Fragment() {
     }
 
     interface OnNewPostListener{
-        fun onNewPost(city:String,captionPpost: String, image:ImageView)
+        fun onNewPost(city:String,captionPost: String, image:ImageView)
     }
 
     companion object {

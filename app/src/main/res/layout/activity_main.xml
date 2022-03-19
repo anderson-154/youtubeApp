@@ -45,6 +45,7 @@
             android:layout_marginStart="212dp"
             android:layout_marginTop="34dp"
             android:text="Siguiente"
+            android:textColor="#000000"
             app:iconTint="#2196F3"
             app:layout_constraintEnd_toEndOf="@+id/loginPassword"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="29dp"
-            android:text="Direccio correo electrónico "
+            android:text="Dirección correo electrónico "
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
