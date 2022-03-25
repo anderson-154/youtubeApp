@@ -19,6 +19,9 @@ class PostAdapter : RecyclerView.Adapter<PostView>() {
     override fun onBindViewHolder(skeleton: PostView, position: Int) {
         val post = posts[position]
         skeleton.caption.text = post.caption
+        skeleton.autor.text = post.autor
+        skeleton.city.text = post.city
+        skeleton.date.text = post.date
     }
 
     fun addPost(post:Post){

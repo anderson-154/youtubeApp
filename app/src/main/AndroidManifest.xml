@@ -13,12 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.YoutubeApp">
         <activity
-            android:name=".RecyclerPostFragment"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileFragment"
-            android:exported="false" />
-        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

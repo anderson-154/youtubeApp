@@ -7,22 +7,22 @@ import com.example.youtubeapp.databinding.ActivityHomeBinding
 
 class HomeActivity : AppCompatActivity() {
 
-    //private lateinit var layoutMangaer : LinearLayoutManager
-
     private lateinit var newPostFrament : NewPostFragment
     private lateinit var profileFragemnt : ProfileFragment
     private lateinit var recyclerFragemnt : RecyclerPostFragment
+
     private lateinit var binding: ActivityHomeBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val username = intent.getStringExtra("name")
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
 
-        newPostFrament = NewPostFragment.newInstance()
+        newPostFrament = NewPostFragment.newInstance(username)
         profileFragemnt = ProfileFragment.newInstance()
         recyclerFragemnt = RecyclerPostFragment.newInstance()
 

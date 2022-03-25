@@ -8,16 +8,16 @@
 
     <EditText
         android:id="@+id/captionET"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
+        android:layout_width="385dp"
+        android:layout_height="145dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="252dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="Descripción"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postImage" />
 
@@ -69,17 +69,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/cityET"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="191dp"
-        android:layout_marginBottom="13dp"
-        android:ems="10"
-        android:hint="Ciudad"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+    <Spinner
+        android:id="@+id/spinnerCity"
+        android:layout_width="216dp"
+        android:layout_height="59dp"
+        android:layout_marginBottom="15dp"
+        android:entries="@array/cities_spinner"
         app:layout_constraintBottom_toTopOf="@+id/captionET"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/captionET" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,13 +14,13 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
-import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.example.youtubeapp.databinding.FragmentNewPostBinding
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
-
-class NewPostFragment : Fragment() {
+class NewPostFragment(val username:String?) : Fragment() {
 
     private var _binding : FragmentNewPostBinding? = null
     private val binding get() = _binding!!
@@ -37,12 +37,14 @@ class NewPostFragment : Fragment() {
         val view = binding.root
 
         binding.publishBtn.setOnClickListener{
-            val caption = binding.captionET.text.toString()
-            val image = binding.postImage
-            val city = binding.cityET.text.toString()
             //publish
             listener?.let {
-                it.onNewPost(city,caption, image)
+                val caption = binding.captionET.text.toString()
+                val image = binding.postImage
+                val city = binding.spinnerCity.selectedItem.toString()
+                val autor = this.username.toString()
+                val date = getCurrentDateTime().toString("yyyy/MM/dd HH:mm:ss")
+                it.onNewPost(city,caption, image, autor, date )
 
             }
         }
@@ -53,8 +55,8 @@ class NewPostFragment : Fragment() {
 
         binding.cameraBtn.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            file = File("${this.activity.getExternalFilesDir(null)}/photo.png")
-            val url = FileProvider.getUriForFile(this, packageName ,file!!)
+            file = File("${this.requireActivity().getExternalFilesDir(null)}/photo.png")
+            val url = FileProvider.getUriForFile(this.requireActivity(), requireActivity().packageName ,file!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT,url)
 
             cameraLauncher.launch(intent)
@@ -90,17 +92,26 @@ class NewPostFragment : Fragment() {
         }
     }
 
+    fun Date.toString(format: String, locale: Locale = Locale.getDefault()): String {
+        val formatter = SimpleDateFormat(format, locale)
+        return formatter.format(this)
+    }
+
+    fun getCurrentDateTime(): Date {
+        return Calendar.getInstance().time
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     interface OnNewPostListener{
-        fun onNewPost(city:String,captionPost: String, image:ImageView)
+        fun onNewPost(city:String,captionPost: String, image:ImageView, autor:String, date:String)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance() = NewPostFragment()
+        fun newInstance(name:String?) = NewPostFragment(name)
     }
 }
