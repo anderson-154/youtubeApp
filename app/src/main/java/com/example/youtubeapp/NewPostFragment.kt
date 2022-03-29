@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -56,8 +57,9 @@ class NewPostFragment(val username:String?) : Fragment() {
         binding.cameraBtn.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             file = File("${this.requireActivity().getExternalFilesDir(null)}/photo.png")
-            val url = FileProvider.getUriForFile(this.requireActivity(), requireActivity().packageName ,file!!)
-            intent.putExtra(MediaStore.EXTRA_OUTPUT,url)
+            Log.e(">>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", file?.path.toString())
+            val uri = FileProvider.getUriForFile(this.requireActivity(), requireActivity().packageName ,file!!)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT,uri)
 
             cameraLauncher.launch(intent)
         }
@@ -88,7 +90,7 @@ class NewPostFragment(val username:String?) : Fragment() {
                 binding.postImage.setImageURI(uriImage)
             }
         }else if (result.resultCode == Activity.RESULT_CANCELED){
-        Toast.makeText(this.activity,"No se selecciono una imagen", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.activity,"No se selecciono una imagen", Toast.LENGTH_SHORT).show()
         }
     }
 

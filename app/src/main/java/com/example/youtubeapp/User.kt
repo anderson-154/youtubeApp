@@ -3,7 +3,7 @@ package com.example.youtubeapp
 import java.util.*
 
 class User {
-    var name:String
+    var name: String
     var email: String
     var password:String
 

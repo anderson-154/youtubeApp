@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        /**requestPermissions(arrayOf(
+       /* requestPermissions(arrayOf(
             Manifest.permission.CAMERA,
             Manifest.permission.READ_EXTERNAL_STORAGE
         ),1)*/
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         if(current !=null){
             startActivity(intent)
         }else{
-            intent.putExtra("user",name)
+            intent.putExtra("name",name)
             Toast.makeText(this.baseContext,"Datos incorrectos",Toast.LENGTH_LONG).show()
         }
     }
@@ -67,7 +67,10 @@ class MainActivity : AppCompatActivity() {
         if(requestCode == 1){
             var allGrant = true;
             for(result in grantResults){
-                if(result == PackageManager.PERMISSION_DENIED) allGrant = false
+                if(result == PackageManager.PERMISSION_DENIED) {
+                    allGrant = false
+                    break
+                }
             }
             if(allGrant){
                 val intent = Intent(this, MainActivity::class.java)
