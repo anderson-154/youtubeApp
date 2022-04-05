@@ -21,11 +21,12 @@ import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewPostFragment(val username:String?) : Fragment() {
+class NewPostFragment(val logUser:User) : Fragment() {
 
     private var _binding : FragmentNewPostBinding? = null
     private val binding get() = _binding!!
     private var file:File? = null
+    private var imageUser: String=""
     //listener
     var listener : OnNewPostListener? = null
 
@@ -36,17 +37,14 @@ class NewPostFragment(val username:String?) : Fragment() {
 
         _binding = FragmentNewPostBinding.inflate(inflater, container, false)
         val view = binding.root
-
         binding.publishBtn.setOnClickListener{
             //publish
             listener?.let {
                 val caption = binding.captionET.text.toString()
-                val image = binding.postImage
                 val city = binding.spinnerCity.selectedItem.toString()
-                val autor = this.username.toString()
-                val date = getCurrentDateTime().toString("yyyy/MM/dd HH:mm:ss")
-                it.onNewPost(city,caption, image, autor, date )
-
+                val date = getCurrentDateTime().toString("yyyy/MM/dd")
+                it.onNewPost(city,caption, imageUser, logUser, date )
+                binding.captionET.text.clear()
             }
         }
 
@@ -60,7 +58,7 @@ class NewPostFragment(val username:String?) : Fragment() {
             Log.e(">>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<", file?.path.toString())
             val uri = FileProvider.getUriForFile(this.requireActivity(), requireActivity().packageName ,file!!)
             intent.putExtra(MediaStore.EXTRA_OUTPUT,uri)
-
+            this.imageUser = uri.toString()
             cameraLauncher.launch(intent)
         }
 
@@ -109,11 +107,11 @@ class NewPostFragment(val username:String?) : Fragment() {
     }
 
     interface OnNewPostListener{
-        fun onNewPost(city:String,captionPost: String, image:ImageView, autor:String, date:String)
+        fun onNewPost(city:String,captionPost: String, image:String, autor:User, date:String)
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(name:String?) = NewPostFragment(name)
+        fun newInstance(logUser:User) = NewPostFragment(logUser)
     }
 }

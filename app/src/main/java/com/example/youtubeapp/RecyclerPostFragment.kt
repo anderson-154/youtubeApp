@@ -46,7 +46,7 @@ class RecyclerPostFragment : Fragment(), NewPostFragment.OnNewPostListener {
         fun newInstance() =  RecyclerPostFragment()
     }
 
-    override fun onNewPost(city:String,captionPpost: String,image:ImageView, autor:String, date:String) {
+    override fun onNewPost(city:String,captionPpost: String,image:String, autor:User, date:String) {
         val newPost = Post(city,captionPpost,image, autor, date)
         adapter.addPost(newPost)
     }

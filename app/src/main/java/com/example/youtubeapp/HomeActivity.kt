@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.youtubeapp.databinding.ActivityHomeBinding
+import com.google.gson.Gson
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,15 +17,15 @@ class HomeActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val username = intent.getStringExtra("name")
+        val logUser = intent.getStringExtra("logUser")
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        var user = Gson().fromJson(logUser, User::class.java)
 
-
-        newPostFrament = NewPostFragment.newInstance(username)
-        profileFragemnt = ProfileFragment.newInstance()
+        newPostFrament = NewPostFragment.newInstance(user)
+        profileFragemnt = ProfileFragment.newInstance(user)
         recyclerFragemnt = RecyclerPostFragment.newInstance()
 
         //suscription

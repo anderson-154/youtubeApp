@@ -17,29 +17,30 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/cityTV"
+        android:id="@+id/cityRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="108dp"
+        android:layout_marginEnd="132dp"
         android:text="Ciudad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagePost" />
 
     <TextView
-        android:id="@+id/userNameTV"
+        android:id="@+id/userNameRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="21dp"
         android:text="Nombre"
-        app:layout_constraintBottom_toTopOf="@+id/captionTV"
-        app:layout_constraintStart_toStartOf="@+id/captionTV"
-        app:layout_constraintTop_toBottomOf="@+id/cityTV"
+        app:layout_constraintBottom_toTopOf="@+id/captionRow"
+        app:layout_constraintStart_toEndOf="@+id/profileImageRow"
+        app:layout_constraintTop_toBottomOf="@+id/cityRow"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/captionTV"
+        android:id="@+id/captionRow"
         android:layout_width="375dp"
         android:layout_height="89dp"
         android:layout_marginTop="92dp"
@@ -49,7 +50,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imagePost" />
 
     <TextView
-        android:id="@+id/dateTV"
+        android:id="@+id/dateRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
@@ -58,6 +59,17 @@
         android:text="Fecha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cityTV"
+        app:layout_constraintStart_toEndOf="@+id/cityRow"
         app:layout_constraintTop_toBottomOf="@+id/imagePost" />
+
+    <ImageView
+        android:id="@+id/profileImageRow"
+        android:layout_width="49dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="23dp"
+        app:layout_constraintBottom_toTopOf="@+id/captionRow"
+        app:layout_constraintEnd_toStartOf="@+id/userNameRow"
+        app:layout_constraintStart_toStartOf="@+id/captionRow"
+        app:srcCompat="@drawable/perfil" />
 </androidx.constraintlayout.widget.ConstraintLayout>

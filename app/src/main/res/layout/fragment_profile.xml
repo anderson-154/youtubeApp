@@ -7,23 +7,6 @@
     android:background="#00FFFFFF">
 
 
-    <Button
-        android:id="@+id/x"
-        android:layout_width="36dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="317dp"
-        android:background="#00050505"
-        android:paddingLeft="6dp"
-        app:icon="@drawable/x"
-        app:iconTint="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-
     <TextView
         android:id="@+id/nameTV"
         android:layout_width="wrap_content"
@@ -31,7 +14,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="289dp"
-        android:text="anderson cg"
+        android:text="Nombre"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,17 +22,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/nameTV4"
+        android:id="@+id/nameTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="128dp"
         android:layout_marginEnd="248dp"
-        android:text="anderson cg"
+        android:text="Nombre"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/profileImage"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -58,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="268dp"
-        android:text="andyguaca@gmail.com"
+        android:text="correo@gmail.com"
         android:textColor="#636363"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,7 +52,7 @@
         android:id="@+id/cuentasTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="16dp"
         android:text="Cuentas"
         android:textColor="#000000"
@@ -82,8 +65,8 @@
         android:id="@+id/otrasCuentasTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="236dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="224dp"
         android:text="Otras Cuentas"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -92,15 +75,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/profileImage"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toStartOf="@+id/nameTV4"
+        app:layout_constraintEnd_toStartOf="@+id/nameTV2"
         app:layout_constraintStart_toStartOf="@+id/emailTV"
         app:layout_constraintTop_toBottomOf="@+id/emailTV"
-        tools:src="@tools:sample/avatars" />
+        tools:src="@drawable/perfil" />
 
     <Button
         android:id="@+id/editBtn"
@@ -113,8 +96,29 @@
         android:textAllCaps="false"
         android:textColor="#03A9F4"
         android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="@+id/nameTV4"
-        app:layout_constraintTop_toBottomOf="@+id/nameTV4"
+        app:layout_constraintStart_toStartOf="@+id/nameTV2"
+        app:layout_constraintTop_toBottomOf="@+id/nameTV2"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/outBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="Cerrar sesión"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/galleryBtn"
+        android:layout_width="58dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        android:text="Galeria"
+        android:textSize="5sp"
+        app:layout_constraintStart_toStartOf="@+id/profileImage"
+        app:layout_constraintTop_toBottomOf="@+id/editBtn"
         tools:ignore="TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

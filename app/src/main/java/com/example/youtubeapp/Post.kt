@@ -5,12 +5,12 @@ import android.widget.ImageView
 class Post {
     var caption : String
     var city : String
-    var imagePost : ImageView
-    var autor : String
+    var imagePost : String
+    var autor : User
     var date : String
 
 
-    constructor(city:String, caption:String, imagePost:ImageView, autor:String, date:String){
+    constructor(city:String, caption:String, imagePost:String, autor:User, date:String){
         this.city = city
         this.caption = caption
         this.imagePost = imagePost
