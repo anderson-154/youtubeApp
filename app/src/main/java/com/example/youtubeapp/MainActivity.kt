@@ -70,17 +70,12 @@ class MainActivity : AppCompatActivity() {
                     allGrant = false
                 }
             }
-            /**if (allGrant) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
             }else {
                 Toast.makeText(
                     this,
                     "Tiene que aceptar todos los permisos para poder continuar",
                     Toast.LENGTH_SHORT
                 ).show()
-            }*/
+            }
         }
-    }
 }

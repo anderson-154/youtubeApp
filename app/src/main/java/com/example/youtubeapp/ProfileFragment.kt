@@ -29,8 +29,14 @@ class ProfileFragment(val logUser:User) : Fragment() {
     ): View? {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
-        val cameraLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),::onCameraResult)
-        val galleryLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult(),::onGalleryResult)
+        val cameraLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            ::onCameraResult
+        )
+        val galleryLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult(),
+            ::onGalleryResult
+        )
 
         binding.nameTV.text = logUser.name
         binding.nameTV2.text = logUser.name
@@ -39,9 +45,13 @@ class ProfileFragment(val logUser:User) : Fragment() {
         binding.profileImage.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             file = File("${this.requireActivity().getExternalFilesDir(null)}/photo.png")
-            val uri = FileProvider.getUriForFile(this.requireActivity(), requireActivity().packageName ,file!!)
+            val uri = FileProvider.getUriForFile(
+                this.requireActivity(),
+                requireActivity().packageName,
+                file!!
+            )
             logUser.photo = uri.toString()
-            intent.putExtra(MediaStore.EXTRA_OUTPUT,uri)
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
             cameraLauncher.launch(intent)
         }
 
@@ -50,10 +60,12 @@ class ProfileFragment(val logUser:User) : Fragment() {
             intent.type = "image/*"
             galleryLauncher.launch(intent)
         }
+
+        binding.outBtn.setOnClickListener {
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
+        }
         return view
-
-
-
     }
 
     fun onCameraResult(result:ActivityResult){
